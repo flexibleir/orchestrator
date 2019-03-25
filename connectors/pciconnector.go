@@ -49,5 +49,14 @@ func (pci *PcIConnector) Run(login *logindetails.LoginDetails) string {
 	}
 
 	fmt.Printf("%#v\n", resp.Payload)
+
+	getParams := &compliance.GetIDParams{ID: "0", Context: ctx}
+	respGet, err1 := client.Compliance.GetID(getParams)
+
+	if err1 != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("%#v\n", respGet.Payload)
 	return ""
 }
